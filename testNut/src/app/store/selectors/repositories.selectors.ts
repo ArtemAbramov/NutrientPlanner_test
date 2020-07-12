@@ -8,3 +8,8 @@ export const selectRepositories = createSelector(
   repositoriesState,
   (state: IRepositoriesState) => state.repositories
 )
+
+export const selectRepository = createSelector(
+  repositoriesState,
+  (state: IRepositoriesState) => state.selectedRepository
+)

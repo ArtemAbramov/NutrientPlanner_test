@@ -14,12 +14,18 @@ import {StoreModule} from '@ngrx/store'
 import {appReducers} from './store/reducers/app.reducers'
 import {EffectsModule} from '@ngrx/effects'
 import {RepositoriesEffects} from './store/effects/repositories.effects'
-import {MatButtonToggleModule} from '@angular/material/button-toggle'
 import {MatSelectModule} from '@angular/material/select'
+import {AppRoutingModule} from './app-routing.module';
+import { SearchPageComponent } from './search-page/search-page.component';
+import { RepositoryPageComponent } from './repository-page/repository-page.component'
+import {StoreRouterConnectingModule} from '@ngrx/router-store'
+import {RepositoriesService} from './repositories.service'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchPageComponent,
+    RepositoryPageComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +39,11 @@ import {MatSelectModule} from '@angular/material/select'
     ReactiveFormsModule,
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([RepositoriesEffects]),
-    MatSelectModule
+    StoreRouterConnectingModule.forRoot({stateKey: 'router'}),
+    MatSelectModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [RepositoriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

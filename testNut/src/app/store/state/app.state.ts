@@ -1,6 +1,8 @@
 import {initialRepositoriesState, IRepositoriesState} from './repositories.state'
+import {RouterReducerState} from '@ngrx/router-store'
 
 export interface IAppState {
+  router?: RouterReducerState
   repositories: IRepositoriesState
 }
 

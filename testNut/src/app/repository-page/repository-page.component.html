@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-header>
+    <img mat-card-image src="{{repository.owner.avatar_url}}" alt="{{repository.owner.login}}">
+    <mat-card-title><a href="{{repository.html_url}}" target="_blank">{{repository.name}}</a></mat-card-title>
+    <mat-card-subtitle><a href="{{repository.owner.html_url}}" target="_blank">{{repository.owner.login}}</a></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{repository.description}}</p>
+    <p>Language: <span>{{repository.language}}</span></p>
+    <p>License: <span *ngIf="repository.license">{{repository.license.name}}</span></p>
+  </mat-card-content>
+</mat-card>

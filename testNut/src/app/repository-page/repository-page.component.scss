@@ -1,0 +1,34 @@
+.mat-card-image {
+  margin-right: 0;
+  margin-left: auto;
+  width: 100px;
+}
+
+.mat-card {
+  a {
+    color: rgba(0,0,0,.87);
+    text-decoration: none;
+
+    &:hover {
+      color: blueviolet;
+    }
+  }
+
+  &-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(0,0,0,.87);
+  }
+
+  &-content {
+    padding: 0 16px;
+
+    p {
+      margin: 4px 0;
+      font-weight: 600;
+
+      span {
+        font-weight: 400;
+      }
+    }
+  }
+}

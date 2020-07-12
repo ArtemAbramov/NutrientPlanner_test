@@ -12,6 +12,12 @@ export const repositoriesReducers = (
         repositories: action.payload
       }
     }
+    case ERepositoriesActions.GetRepositorySuccess: {
+      return {
+        ...state,
+        selectedRepository: action.payload
+      }
+    }
 
     default:
       return state

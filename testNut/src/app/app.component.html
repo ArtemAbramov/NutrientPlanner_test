@@ -1,42 +1,6 @@
 <mat-toolbar>
-  <h1>Github Search</h1>
+  <h1><a routerLink="/">Github Search</a></h1>
 </mat-toolbar>
-
-<mat-card class="card">
-  <mat-form-field appearance="fill">
-    <mat-label>Sort</mat-label>
-    <mat-select
-      #sortSelect
-      (selectionChange)="sort(searchInput.value, sortSelect.value)"
-    >
-      <mat-option *ngFor="let item of sortValues" [value]="item">
-        {{item}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field class="input">
-    <input
-      matInput
-      placeholder="Enter repo name"
-      type="text"
-      #searchInput
-      (input)="search(searchInput.value, sortSelect.value)"
-    >
-  </mat-form-field>
-
-  <mat-list
-    role="list"
-    *ngIf="repositories"
-  >
-    <mat-list-item
-      role="listitem"
-      *ngFor="let repo of repositories"
-    >
-      <h2 matLine>
-        <a href="{{ repo.html_url }}" target="_blank">{{ repo.name }}</a>
-      </h2>
-      <p matLine>{{ repo.description }}</p>
-    </mat-list-item>
-  </mat-list>
-</mat-card>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
