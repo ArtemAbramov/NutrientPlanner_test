@@ -16,7 +16,6 @@ import {selectRepositories} from './store/selectors/repositories.selectors'
 })
 export class AppComponent implements OnInit, OnDestroy {
   sortValues = ['Desc', 'Asc']
-  selectedSort = null
   repositories: IRepository[] = null
 
   sSub: Subscription
@@ -36,41 +35,11 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  search(event): void {
-    this.store.dispatch(new GetRepositories({name: event.target.value, sort: this.selectedSort}))
+  search(name, sort): void {
+    this.store.dispatch(new GetRepositories({name, sort}))
   }
 
-  sort(): void {
-    if (this.repositories) {
-      switch (this.selectedSort) {
-        case 'Desc': {
-          this.repositories = [...this.repositories].sort((a, b): number => {
-            if (a.name.toLowerCase() < b.name.toLowerCase()) {
-              return 1
-            }
-            if (a.name.toLowerCase() > b.name.toLowerCase()) {
-              return -1
-            }
-            return 0
-          })
-          break
-        }
-        case 'Asc': {
-          this.repositories = [...this.repositories].sort((a, b): number => {
-            if (a.name.toLowerCase() < b.name.toLowerCase()) {
-              return -1
-            }
-            if (a.name.toLowerCase() > b.name.toLowerCase()) {
-              return 1
-            }
-            return 0
-          })
-          break
-        }
-        default:
-          break
-      }
-    }
-    return
+  sort(name, sort): void {
+    this.search(name, sort)
   }
 }

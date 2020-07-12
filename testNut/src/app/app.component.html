@@ -6,8 +6,8 @@
   <mat-form-field appearance="fill">
     <mat-label>Sort</mat-label>
     <mat-select
-      [(value)]="selectedSort"
-      (selectionChange)="sort()"
+      #sortSelect
+      (selectionChange)="sort(searchInput.value, sortSelect.value)"
     >
       <mat-option *ngFor="let item of sortValues" [value]="item">
         {{item}}
@@ -19,7 +19,9 @@
     <input
       matInput
       placeholder="Enter repo name"
-      (input)="search($event)"
+      type="text"
+      #searchInput
+      (input)="search(searchInput.value, sortSelect.value)"
     >
   </mat-form-field>
 
